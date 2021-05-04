@@ -1,3 +1,17 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (isset($_SESSION['email'])) {
+    header('Location: ../summary');
+    exit();
+}
+
+//avoid cross site attacks
+$_SESSION['csrf_ajax_key'] = sha1(uniqid());
+$_SESSION['csrf_ajax_val'] = sha1(uniqid());
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +25,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="../assets/plugins/snackbar/snackbar.min.css">
+    <link rel="stylesheet" href="../assets/plugins/loaders/custom-loader.css">
 </head>
 
 <body class="bg-gradient-primary">
@@ -28,18 +44,14 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Welcome Back!</h4>
                                     </div>
-                                    <form class="user">
-                                        <div class="form-group"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address..." name="email"></div>
-                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
-                                            </div>
-                                        </div><button class="btn btn-primary btn-block text-white btn-user" type="submit">Login</button>
+                                    <form class="user" method="post" id="login-form">
+                                        <div class="form-group"><input class="form-control form-control-user" type="text" id="email" aria-describedby="emailHelp" placeholder="Email Address..." name="email"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password"></div>
+                                        <button class="btn btn-primary btn-block text-white btn-user" type="submit" id="login">Login</button>
+                                        <input type="hidden" name="<?php echo $_SESSION['csrf_ajax_key']; ?>" value="<?php echo $_SESSION['csrf_ajax_val']; ?>">
                                         <hr>
                                     </form>
-                                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
-                                    <div class="text-center"><a class="small" href="register.php">Create an Account!</a></div>
+                                    <div class="text-center"><a class="small" href="register">Create an Account!</a></div>
                                 </div>
                             </div>
                         </div>
@@ -54,6 +66,11 @@
     <script src="../assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="../assets/js/theme.js"></script>
+
+    <script src="../assets/plugins/snackbar/snackbar.min.js"></script>
+    <script src="../assets/plugins/snackbar/custom-snackbar.js"></script>
+
+    <script src="js/login-engage.js"></script>
 </body>
 
 </html>

@@ -3,6 +3,11 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+if (isset($_SESSION['email'])) {
+    header('Location: ../summary');
+    exit();
+}
+
 //avoid cross site attacks
 $_SESSION['csrf_ajax_key'] = sha1(uniqid());
 $_SESSION['csrf_ajax_val'] = sha1(uniqid());
@@ -53,8 +58,7 @@ $_SESSION['csrf_ajax_val'] = sha1(uniqid());
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password" required></div>
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="password_repeat" placeholder="Repeat Password" name="password_repeat"required></div>
                                 </div><button class="btn btn-primary btn-block text-white btn-user" type="submit" id="register">Register Account</button>
-                                <input type="hidden" name="<?php echo $_SESSION['csrf_ajax_key']; ?>"
-                                       value="<?php echo $_SESSION['csrf_ajax_val']; ?>">
+                                <input type="hidden" name="<?php echo $_SESSION['csrf_ajax_key']; ?>" value="<?php echo $_SESSION['csrf_ajax_val']; ?>">
                                 <hr>
                             </form>
                             <div class="text-center"><a class="small" href="login.php">Already have an account? Login!</a></div>
