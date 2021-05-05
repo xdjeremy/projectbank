@@ -37,6 +37,15 @@ if (
         ));
         die($return);
     } else if (password_verify($password, $user->client_pass)) {
+
+        if ($user->active == 0) {
+            $return = json_encode(array(
+                'success' => false,
+                'msg' => 'Account needs to be activated by Admin.'
+            ));
+            die($return);
+        }
+
         $_SESSION['client_num'] = $user->client_num;
         $_SESSION['client_fname'] = $user->client_fname;
         $_SESSION['client_lname'] = $user->client_lname;

@@ -27,7 +27,7 @@ $('#login-form').submit(function (e) {
             data: data,
             success: function (e) {
                 if (e.success) {
-                    window.location.replace("../summary");
+                    window.location.replace("login");
                     return;
                 } else {
                     console.log(e)
