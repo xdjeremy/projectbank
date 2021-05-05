@@ -48,7 +48,7 @@ $account = $stmt->fetch(PDO::FETCH_OBJ);
                             <div class="card text-white bg-primary shadow my-3">
                                 <div class="card-body">
                                     <p class="m-0">Savings</p>
-                                    <p class="text-white-50 small m-0">45435-5435-5435</p>
+                                    <p class="text-white-50 small m-0"><?php echo $account->acc_num; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -86,11 +86,9 @@ $account = $stmt->fetch(PDO::FETCH_OBJ);
                     </div>
                 </div>
             </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Project Bank 2021</span></div>
-                </div>
-            </footer>
+        <?php
+        include '../inc/footer.php';
+        ?>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

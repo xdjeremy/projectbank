@@ -51,6 +51,12 @@ if (
         $_SESSION['client_lname'] = $user->client_lname;
         $_SESSION['email'] = $user->client_email;
 
+        $stmt = $dbh->prepare('SELECT * FROM account WHERE client_num = ? ORDER BY id DESC LIMIT 1');
+        $stmt->execute([$user->client_num]);
+        $acc = $stmt->fetch(PDO::FETCH_OBJ);
+
+        //set session for acc_num
+        $_SESSION['acc_num'] = $acc->acc_num;
 
         $date = date("Y-m-d H:i:s");
         $stmt = $dbh->prepare('INSERT INTO login (client_num, date_time, IP_address) VALUES (:client_num, :datetime, :ip)');
