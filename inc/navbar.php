@@ -5,9 +5,9 @@
 		</a>
 		<hr class="sidebar-divider my-0">
 		<ul class="navbar-nav text-light" id="accordionSidebar">
-			<li class="nav-item"><a class="nav-link active" href="summary"><i class="fa fa-suitcase"></i><span>&nbsp;Account Summary</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="summary"><i class="fa fa-suitcase"></i><span>&nbsp;Account Summary</span></a></li>
 			<li class="nav-item"><a class="nav-link" href="transactions"><i class="icon ion-arrow-swap"></i><span>&nbsp;Payments &amp; Transfers</span></a></li>
-			<li class="nav-item"><a class="nav-link" href="send-money.html"><i class="icon ion-android-send"></i><span>&nbsp;Send Money</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="send-money"><i class="icon ion-android-send"></i><span>&nbsp;Send Money</span></a></li>
 			<li class="nav-item"><a class="nav-link" href="transactions.html"><i class="fas fa-user-friends"></i><span>&nbsp;Accounts</span></a></li>
 			<li class="nav-item"><a class="nav-link" href="transactions.html"><i class="far fa-question-circle"></i><span>&nbsp;Waiting for Apporoval</span></a></li>
 		</ul>
