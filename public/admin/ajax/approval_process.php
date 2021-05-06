@@ -12,16 +12,18 @@ if (
 
 	$id = $_POST['id'];
 
+	$length = 12;
+	$min = pow(10, $length - 1) ;
+	$max = pow(10, $length) - 1;
+
+
 	$stmt = $dbh->prepare('UPDATE client SET active = 1 WHERE client_num = ?');
 	$stmt->execute([$id]);
-
-
-	$acc_num = rand(111111111111,999999999999);
 
 	$stmt = $dbh->prepare('INSERT INTO account (client_num, acc_num) VALUES (:client_id, :acc_num)');
 	$stmt->execute([
 		"client_id" => $id,
-		"acc_num" => $acc_num
+		"acc_num" => mt_rand($min, $max)
 	]);
 }
 

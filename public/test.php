@@ -1,4 +1,12 @@
 <?php
-$randnum = rand(111111111111,999999999999);
+function randomNumber($length) {
+	$result = '';
 
-echo $randnum;
+	for($i = 0; $i < $length; $i++) {
+		$result .= mt_rand(0, 9);
+	}
+
+	return $result;
+}
+
+echo randomNumber(12);
