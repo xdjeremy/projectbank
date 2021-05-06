@@ -7,6 +7,8 @@ sql file is at root folder
 
 ## Preview
 [http://xdjer.alwaysdata.net/auth/login](http://xdjer.alwaysdata.net/auth/login)
-user: admin
-pass: admin
-create new account to test user privilege
+
+user: **admin**
+pass: **admin**
+
+Create a new account to test normal user privilege
