@@ -18,7 +18,7 @@ if (!isset($_SESSION)) {
 			if ($_SESSION['admin'] == 1) {
 				echo '
 				<!--<li class="nav-item"><a class="nav-link" href="transactions.html"><i class="fas fa-user-friends"></i><span>&nbsp;Accounts</span></a></li>-->
-				<li class="nav-item"><a class="nav-link" href="transactions.html"><i class="far fa-question-circle"></i><span>&nbsp;Waiting for Apporoval</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="admin/approval"><i class="far fa-question-circle"></i><span>&nbsp;Waiting for Apporoval</span></a></li>
 				';
 			}
 			?>
