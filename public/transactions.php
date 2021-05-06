@@ -2,6 +2,11 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+
+if (!isset($_SESSION['email'])) {
+	header("Location: auth/login");
+}
+
 include_once '../inc/database.php';
 ?>
 <!DOCTYPE html>

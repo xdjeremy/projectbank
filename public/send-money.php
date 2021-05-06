@@ -3,6 +3,10 @@ if(!isset($_SESSION)) {
     session_start();
 }
 
+if (!isset($_SESSION['email'])) {
+	header("Location: auth/login");
+}
+
 //avoid cross site attacks
 $_SESSION['csrf_ajax_key'] = sha1(uniqid());
 $_SESSION['csrf_ajax_val'] = sha1(uniqid());
@@ -49,12 +53,13 @@ $_SESSION['csrf_ajax_val'] = sha1(uniqid());
                                             <form method="post" id="send-money-form">
                                                 <div class="form-row">
                                                     <div class="col-12">
-                                                        <div class="form-group"><label for="amount"><strong>Amount</strong></label><input class="form-control" type="number" name="amount" placeholder="100" id="amount"></div>
+                                                        <div class="form-group"><label for="amount"><strong>Amount</strong></label><input class="form-control" type="number" name="amount" placeholder="0" id="amount"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="form-group"><label for="account_number"><strong>Send to Account Number</strong></label><input class="form-control" type="text" name="account_number" placeholder="1234567890" id="acc_num"></div>
+                                                        <div class="form-group"><label for="account_number"><strong>Send to Account Number</strong></label><input class="form-control" type="text" name="account_number" placeholder="------------" id="acc_num"></div>
                                                     </div>
                                                 </div>
+	                                            <input type="hidden" name="<?php echo $_SESSION['csrf_ajax_key']; ?>" value="<?php echo $_SESSION['csrf_ajax_val']; ?>">
                                                 <div class="form-group"><button class="btn btn-primary btn-sm" type="submit" id="send-money">Send</button></div>
                                             </form>
                                         </div>

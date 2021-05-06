@@ -58,6 +58,15 @@ if (
         //set session for acc_num
         $_SESSION['acc_num'] = $acc->acc_num;
 
+        //check if admin
+	    $stmt = $dbh->prepare('SELECT * FROM admin WHERE client_id = ?');
+	    $stmt->execute([$user->client_num]);
+	    if ($stmt->rowCount() >= 1) {
+	    	$_SESSION['admin'] = 1;
+	    } else {
+	    	$_SESSION['admin'] = 0;
+	    }
+
         $date = date("Y-m-d H:i:s");
         $stmt = $dbh->prepare('INSERT INTO login (client_num, date_time, IP_address) VALUES (:client_num, :datetime, :ip)');
         $stmt->execute([

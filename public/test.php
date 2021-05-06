@@ -1,12 +1,7 @@
 <?php
-function randomNumber($length) {
-	$result = '';
 
-	for($i = 0; $i < $length; $i++) {
-		$result .= mt_rand(0, 9);
-	}
+include "../inc/database.php";
 
-	return $result;
-}
-
-echo randomNumber(12);
+$stmt = $dbh->prepare('SELECT * FROM account WHERE acc_num = ? ORDER BY id DESC LIMIT 1');
+$stmt->execute(['409663565927']);
+$receiver = $stmt->fetch(PDO::FETCH_OBJ);

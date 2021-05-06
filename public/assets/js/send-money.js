@@ -30,7 +30,7 @@ $('#send-money-form').submit(function (e){
    } else {
        $.ajax({
            type: 'post',
-           url: 'assets/ajax/send-money-process.php',
+           url: 'assets/ajax/send-money-process',
            dataType: 'json',
            data: data,
            success: function (e){
@@ -38,7 +38,7 @@ $('#send-money-form').submit(function (e){
                    Snackbar.show({
                        text: "Success!",
                        actionTextColor: "#fff",
-                       backgroundColor: "#e7515a",
+                       backgroundColor: "#5fd734",
                    });
                    //reset fields
                    $('#amount').val("");
@@ -54,7 +54,7 @@ $('#send-money-form').submit(function (e){
                }
            },
            error: function (e){
-               console.log(e)
+               console.log(e.responseText)
                Snackbar.show({
                    text: "Something went wrong.",
                    actionTextColor: '#fff',
